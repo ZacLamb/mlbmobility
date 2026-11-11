@@ -58,7 +58,8 @@ p{margin:0 0 1em}
 .site-header{background:var(--paper);position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.7rem;padding-bottom:.7rem}
 .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none}
-.brand img{width:auto;height:56px;border-radius:8px}
+.brand img{width:auto;height:62px}
+.brand-text{border-left:2px solid var(--line);padding-left:.9rem;gap:.2rem}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
 .brand-name{font-family:var(--display);font-weight:700;font-size:1.45rem;color:var(--navy)}
 .brand-sub{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -346,3 +347,12 @@ details[open] summary::after{content:"–"}
   .mobile-cta-cb{background:var(--navy);color:#fff}
   .site-footer{padding-bottom:7rem}
 }
+
+/* hero without a hi-res photo */
+.hero-textured{background:var(--navy)}
+.hero-textured::before{background:radial-gradient(900px 420px at 88% -10%,rgba(44,122,118,.6),transparent 62%),radial-gradient(600px 300px at -5% 110%,rgba(196,70,31,.28),transparent 60%),repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 2px,transparent 2px 14px)}
+/* framed photo ("polaroid") */
+.photo-card{margin:0;background:#fff;padding:.7rem .7rem .2rem;border-radius:10px;box-shadow:var(--shadow);transform:rotate(-1.6deg);border:1px solid var(--line)}
+.photo-card img{border-radius:6px;width:100%;aspect-ratio:4/5;object-fit:cover}
+.photo-card figcaption{font-family:var(--display);font-style:italic;color:var(--muted);text-align:center;padding:.5rem 0 .4rem;font-size:.95rem}
+.product-img img{max-width:min(100%,340px)}

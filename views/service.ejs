@@ -5,11 +5,11 @@
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: site.domain + '/' }, { '@type': 'ListItem', position: 2, name: page.nav, item: site.domain + page.path }] }
   ].concat(faqSchema);
 %>
-<%- include('partials/head', { schema: schema, ogImg: page.heroImg }) %>
+<%- include('partials/head', { schema: schema, ogImg: page.heroImg || page.photo || page.cardImg }) %>
 <%- include('partials/header') %>
 
-<section class="hero hero-page">
-  <div class="hero-media"><img src="<%= page.heroImg %>" alt="<%= page.nav %> — Totally Mobile LLC" fetchpriority="high" width="1920" height="900"></div>
+<section class="hero hero-page<%= page.heroImg ? '' : ' hero-textured' %>">
+  <% if (page.heroImg) { %><div class="hero-media"><img src="<%= page.heroImg %>" alt="<%= page.nav %> — Totally Mobile LLC" fetchpriority="high"></div><% } %>
   <div class="wrap hero-grid">
     <div class="hero-copy reveal">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span><%= page.nav %></span></nav>
@@ -51,6 +51,7 @@
       <% }) %>
     </article>
     <aside class="sidebar">
+      <% if (page.photo) { %><figure class="photo-card"><img src="<%= page.photo %>" alt="<%= page.nav %> from Totally Mobile LLC" loading="lazy"><figcaption><%= page.nav %> · Totally Mobile LLC</figcaption></figure><% } %>
       <div class="side-card">
         <h2 class="side-h">Talk to a local expert</h2>
         <p>Free personalized consultation — and free in-home estimates for stair lifts.</p>
