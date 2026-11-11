@@ -1,0 +1,46 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>About</span></nav>
+    <p class="eyebrow">About</p>
+    <h1>About Totally Mobile LLC</h1>
+    <p class="hero-lede">Totally Mobile LLC provides stair lifts, ramps, scooters, and powered wheelchairs to the East Sandwich, Massachusetts, area — and to all of Cape Cod, the Islands and the South Shore.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div class="split-copy prose">
+      <h2>Locally &amp; Woman-Owned Since 1998</h2>
+      <p>Since 1998, our locally and woman-owned business has been at the forefront of mobility solutions. With over 20 years under our belt, we've seen it all and fixed it all—from scooters to wheelchairs, if we sell it, we repair it.</p>
+      <p>Our commitment to you doesn't end with a sale. We offer a 1-year warranty on our labor, plus manufacturer warranties, and we come to you — no need to worry about how you'll get your powered wheelchair or scooter to us for repairs. We offer free personalized consultations to ensure you get exactly what you need.</p>
+      <p><a class="text-link" href="/hibu-video-splash">Watch our company video →</a></p>
+    </div>
+    <div class="split-media"><img src="<%= img('CUSTOM_STAIRLIFT2-1920w.jpg') %>" alt="Custom stair lift installed by Totally Mobile LLC" loading="lazy"></div>
+  </div>
+</section>
+<section class="section tide">
+  <div class="wrap">
+    <dl class="fact-grid">
+      <div><dt>Year Established</dt><dd>1998</dd></div>
+      <div><dt>Services</dt><dd><a href="/stair-lifts-cape-cod">Stair Lifts</a>, <a href="/scooters">Scooters</a>, <a href="/ramps">Ramps</a>, <a href="/vertical-platform-lifts">Vertical Platform Lift</a>, Automatic Door Openers, <a href="/manual-and-powered-wheelchairs">Wheelchairs</a>, <a href="/vehicle-lifts">Car Lifts</a>, <a href="/rentals">Rentals</a>, <a href="/scooter-and-power-wheelchair-repair">Repairs</a></dd></div>
+      <div><dt>Brands</dt><dd>Bruno Stair Lifts, Pride Mobility, Deming Designs, American Access, Sitting Pretty</dd></div>
+      <div><dt>Products</dt><dd>Go Chair, Go Chair MED, Jazzy 1450, Jazzy Air 2, Jazzy Elite ES, Jazzy Elite ES1, Jazzy Elite HD, Jazzy Passport, Jazzy Select, Jazzy Select 6</dd></div>
+      <div><dt>Specialties</dt><dd>Aluminum Beach Walker, Bathroom Safety Rails, Commodes, Elevating Leg Rests, Fixed Frame All Terrain Beach Wheelchairs, Lifts, Manual Mobility, Manual Wheelchairs, Mobility Products (3-Wheel, 4-Wheel, Manual, and Power Wheelchairs), Mobility Scooters, Personal Aids, Power Wheelchairs, Ramps, Reclining All Terrain Beach Wheelchairs, Rentals, Shower and Bath Transfer Chairs, Stairlifts</dd></div>
+      <div><dt>Payment Options</dt><dd>American Express, Cash, Check, Discover, MasterCard, Visa</dd></div>
+      <div><dt>Business Hours</dt><dd>Mon – Fri, 8:00 am – 4:00 pm · Sat – Sun, Closed</dd></div>
+      <div><dt>Languages</dt><dd>English</dd></div>
+      <div><dt>Good to Know</dt><dd>FDA Class II Medical Devices</dd></div>
+    </dl>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Brands We Carry</h2></div>
+    <ul class="logo-row">
+      <% ['EssentialCollection-1920w.jpg','HeritageCollection-LG-12-14-1920w.jpg','PowerRecliners-Lift_LOGOw_pride-1920w.jpg','Viva+Lift+Collection+9+19-1920w.png','AA_HERO_Logo-1920w.jpg','AA_Sidekick_Logo-1920w.jpg'].forEach(function(l){ %><li><img src="<%= img(l) %>" alt="Brand logo" loading="lazy"></li><% }) %>
+    </ul>
+  </div>
+</section>
+<%- include('partials/cta-band') %>
+<%- include('partials/footer') %>

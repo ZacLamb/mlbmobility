@@ -1,0 +1,14 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim"><div class="wrap narrow"><h1><%= kind === 'accessibility' ? 'Accessibility Statement' : 'Privacy Policy' %></h1></div></section>
+<section class="section"><div class="wrap narrow prose">
+<% if (kind === 'accessibility') { %>
+  <p>Totally Mobile LLC serves people with mobility challenges every day, and we want this website to work for everyone. The site is built with large, high-contrast type designed for low-vision readers, full keyboard navigation, descriptive image text and a "skip to content" link.</p>
+  <p>If anything on this site is hard to use, please call us at <a href="<%= site.phoneHref %>"><%= site.phone %></a> (Mon–Fri, 8–4) and we'll help you directly — and fix the issue.</p>
+<% } else { %>
+  <p>When you submit a form on mlbmobility.com, Totally Mobile LLC collects the information you provide (such as your name, phone number, email and the product you're interested in) so we can respond to your request. We do not sell your personal information.</p>
+  <p>This website may use basic analytics and advertising cookies to understand how visitors use the site. You can disable cookies in your browser settings.</p>
+  <p>Questions about your information? Call <a href="<%= site.phoneHref %>"><%= site.phone %></a> or write to us at <%= site.address.street %>, <%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %>.</p>
+<% } %>
+</div></section>
+<%- include('partials/footer') %>

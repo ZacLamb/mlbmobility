@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap narrow center">
+    <h1>We couldn't find that page.</h1>
+    <p class="hero-lede">It may have moved when we updated our website. Try one of these, or call <a href="<%= site.phoneHref %>"><%= site.phone %></a>.</p>
+    <ul class="town-chips center-chips">
+      <% servicePages.forEach(function(p){ %><li><a href="<%= p.path %>"><%= p.nav %></a></li><% }) %>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>
+</section>
+<%- include('partials/footer') %>

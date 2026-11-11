@@ -1,0 +1,43 @@
+<%
+  var formId = (typeof fid !== 'undefined') ? fid : 'lead';
+  var formName = (typeof fname !== 'undefined') ? fname : 'Request Call Back';
+  var preset = (typeof presetProduct !== 'undefined') ? presetProduct : '';
+  var presetTown = (typeof townName !== 'undefined') ? townName : '';
+  var showMsg = (typeof withMessage !== 'undefined') ? withMessage : false;
+%>
+<form class="lead-form" action="/api/lead" method="post" data-lead-form novalidate>
+  <input type="hidden" name="form" value="<%= formName %>">
+  <input type="hidden" name="page" value="<%= canonical %>">
+  <input type="hidden" name="town" value="<%= presetTown %>">
+  <div class="hp" aria-hidden="true"><label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+  <div class="field">
+    <label for="<%= formId %>-name">Name</label>
+    <input id="<%= formId %>-name" name="name" type="text" autocomplete="name" required>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="<%= formId %>-phone">Phone</label>
+      <input id="<%= formId %>-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+    </div>
+    <div class="field">
+      <label for="<%= formId %>-email">Email</label>
+      <input id="<%= formId %>-email" name="email" type="email" autocomplete="email">
+    </div>
+  </div>
+  <div class="field">
+    <label for="<%= formId %>-product">Product / Service</label>
+    <select id="<%= formId %>-product" name="product">
+      <option value="">Choose one…</option>
+      <% site.productOptions.forEach(function(o){ %><option<%= o===preset ? ' selected' : '' %>><%= o %></option><% }) %>
+    </select>
+  </div>
+  <% if (showMsg) { %>
+  <div class="field">
+    <label for="<%= formId %>-message">Message</label>
+    <textarea id="<%= formId %>-message" name="message" rows="4"></textarea>
+  </div>
+  <% } %>
+  <button type="submit" class="btn btn-coral btn-block">Request Call Back</button>
+  <p class="form-note" role="status" aria-live="polite"></p>
+  <p class="form-fine">Prefer to talk now? Call <a href="<%= site.phoneHref %>"><%= site.phone %></a> · Mon–Fri 8–4</p>
+</form>

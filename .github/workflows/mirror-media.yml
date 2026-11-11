@@ -1,0 +1,28 @@
+name: Mirror Hibu media into repo
+
+# Downloads every original image + the company video from Hibu's CDN into
+# public/media and commits them, so the site keeps working after Hibu is cancelled.
+on:
+  push:
+    branches: [main]
+    paths: ['data/assets.js', 'scripts/fetch-assets.js', '.github/workflows/mirror-media.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/fetch-assets.js
+      - name: Commit media
+        run: |
+          git config user.name "media-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/media
+          git diff --cached --quiet || (git commit -m "Mirror original Hibu media into public/media" && git push)

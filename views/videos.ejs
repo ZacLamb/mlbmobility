@@ -1,0 +1,36 @@
+<%- include('partials/head', { schema: [{ '@context':'https://schema.org','@type':'ItemList', itemListElement: videos.map(function(v,i){ return { '@type':'ListItem', position:i+1, url: site.domain + v.path, name: v.title }; }) }] }) %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Videos</span></nav>
+    <p class="eyebrow">Totally Mobile LLC</p>
+    <h1>Stair Lift, Platform Lift &amp; Vehicle Lift Videos</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="narrow prose">
+      <h2>Explore with Totally Mobile LLC Videos</h2>
+      <p>Dive into the dynamic world of mobility solutions through our curated collection of videos! Witness our products in action and see for yourself the difference they can make. We believe in showing rather than just telling because seeing is believing. Our commitment to putting you first drives us to share comprehensive insights into our range of products. If any questions arise or you need further assistance, don't hesitate to <a href="/contact">reach out</a>. We're here and ready to support you whenever you need us.</p>
+    </div>
+    <ul class="video-grid">
+      <li class="video-card video-card-feature">
+        <a href="/hibu-video-splash">
+          <div class="video-thumb"><img src="<%= img('totally-mobile-video-01-1920w.jpg') %>" alt="About Totally Mobile LLC video" loading="lazy"><span class="play" aria-hidden="true">▶</span></div>
+          <h2 class="h-sm">About Totally Mobile LLC</h2>
+        </a>
+      </li>
+      <% videos.forEach(function(v){ %>
+      <li class="video-card">
+        <a href="<%= v.path %>">
+          <div class="video-thumb"><img src="https://i.ytimg.com/vi/<%= v.youtube %>/hqdefault.jpg" alt="<%= v.title %> video" loading="lazy" width="480" height="360"><span class="play" aria-hidden="true">▶</span></div>
+          <h2 class="h-sm"><%= v.title %></h2>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+    <p class="fine narrow">We service all of our new and used wheelchair products. VA pricing is restricted to their guidelines. See the Manufacturer's Warranty that is in effect on all products. There is a 1-year warranty on labor for any product. *Pride® FDA Class II Medical Devices are designed to aid individuals with mobility impairments.</p>
+  </div>
+</section>
+<%- include('partials/cta-band') %>
+<%- include('partials/footer') %>

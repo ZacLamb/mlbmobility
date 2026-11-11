@@ -1,0 +1,16 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <p class="eyebrow">Learn More About</p>
+    <h1>Totally Mobile LLC</h1>
+    <p class="hero-lede">Located in East Sandwich, MA. Totally Mobile LLC specializes in wheelchairs and mobility products. 1-year labor warranty. Free personalized consultation. Manufacturer warranties available. Call today for more information.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap narrow">
+    <div class="embed"><video controls preload="metadata" playsinline poster="<%= img('totally-mobile-video-01-1920w.jpg') %>"><source src="/media/totally-mobile-llc-7016279549.mp4" type="video/mp4">Your browser does not support video.</video></div>
+    <p class="center"><a class="btn btn-coral" href="<%= site.phoneHref %>">Call <%= site.phone %></a> <a class="btn btn-ghost" href="/videos">More videos</a></p>
+  </div>
+</section>
+<%- include('partials/footer') %>

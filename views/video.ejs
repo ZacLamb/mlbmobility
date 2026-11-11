@@ -1,0 +1,18 @@
+<%- include('partials/head', { schema: [{ '@context':'https://schema.org','@type':'VideoObject', name: video.title, description: video.blurb, thumbnailUrl: 'https://i.ytimg.com/vi/' + video.youtube + '/hqdefault.jpg', embedUrl: 'https://www.youtube-nocookie.com/embed/' + video.youtube }] }) %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/videos">Videos</a> <span aria-hidden="true">/</span> <span><%= video.title %></span></nav>
+    <h1><%= video.title %></h1>
+    <p class="hero-lede"><%= video.blurb %></p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap narrow">
+    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/<%= video.youtube %>?rel=0" title="<%= video.title %>" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+    <% if (related) { %><p class="center"><a class="btn btn-navy" href="<%= related.path %>">Learn more about <%= related.nav %></a> <a class="btn btn-ghost" href="/request-call-back">Request Call Back</a></p><% } %>
+    <h2 class="h-sm mt">More videos</h2>
+    <ul class="link-list"><% videos.filter(function(v){ return v.path !== video.path; }).forEach(function(v){ %><li><a href="<%= v.path %>"><%= v.title %></a></li><% }) %></ul>
+  </div>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,32 @@
+<%
+  var shots = [
+    ['VPL5-1920w.jpg','Vertical platform lift installation'],['VPL4-1920w.jpg','Vertical platform lift installation'],['VPL3-1920w.jpg','Vertical platform lift installation'],['VPL2-1920w.jpg','Vertical platform lift installation'],['VPL-1920w.jpg','Vertical platform lift installation'],
+    ['SUITCASE+RAMPS-1920w.jpg','Suitcase ramps'],['SCOOTER+AND+BEACH+WHEELCHAIR-1920w.jpg','Scooter and beach wheelchair'],['RAMP_%282%29-1920w.jpg','Wheelchair ramp installation'],['RAMP-1920w.jpg','Wheelchair ramp installation'],
+    ['FOLDING+RAIL-1920w.jpg','Stair lift with folding rail'],['FOLDING+RAIL+2+-+Copy-1920w.jpg','Stair lift with folding rail'],['FOLDING+RAIL+-+Copy-1920w.jpg','Stair lift with folding rail'],
+    ['CUSTOM_STAIRLIFT2-1920w.jpg','Custom curved stair lift'],['CUSTOM_STAIRLIFT_3-1920w.jpg','Custom curved stair lift'],['totally-mobile-video-01-1920w.jpg','Totally Mobile LLC'],
+    ['CUSTOM+STAIRLIFT_20220718_152857+-+Copy-1920w.JPEG','Custom stair lift installation'],['CUSTOM+STAIRLIFT-1920w.JPEG','Custom stair lift installation'],
+    ['BRUNO+OUTSIDE+STAIRLIFT3-1920w.jpg','Bruno outdoor stair lift'],['BRUNO+OUTSIDE+STAIRLIFT-1920w.jpg','Bruno outdoor stair lift'],['BRUNO+OUTSIDE+STAIRLIFT+2-1920w.jpg','Bruno outdoor stair lift'],['BRUNO+OUTSIDE+STAIRLIFT+-+Copy-1920w.jpg','Bruno outdoor stair lift'],
+    ['BRUNO+CUSTOM+STAIRLIFT+-+Copy-1920w.jpg','Bruno custom stair lift'],['BEACH+WALKER-1920w.jpg','All-terrain beach walker']
+  ];
+%>
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Gallery</span></nav>
+    <p class="eyebrow">Totally Mobile LLC</p>
+    <h1>Installation Gallery</h1>
+    <p class="hero-lede">Real stair lifts, platform lifts, ramps and beach equipment from our customers' homes across Cape Cod.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <ul class="gallery" data-lightbox>
+      <% shots.forEach(function(s){ %><li><a href="<%= img(s[0]) %>"><img src="<%= img(s[0]) %>" alt="<%= s[1] %> by Totally Mobile LLC" loading="lazy"></a></li><% }) %>
+    </ul>
+    <p class="center mt">Like what you see? <a href="/stair-lifts-cape-cod">Stair lifts</a> · <a href="/vertical-platform-lifts">Platform lifts</a> · <a href="/ramps">Ramps</a> · <a href="/beach-wheelchairs">Beach wheelchairs</a></p>
+  </div>
+</section>
+<dialog class="lightbox" aria-label="Image viewer"><button class="lb-close" aria-label="Close">×</button><img alt=""></dialog>
+<%- include('partials/cta-band') %>
+<%- include('partials/footer') %>

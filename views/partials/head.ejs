@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.className+=" js"</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<link rel="canonical" href="<%= canonical %>">
+<% if (typeof noindex !== 'undefined' && noindex) { %><meta name="robots" content="noindex"><% } %>
+<meta name="google-site-verification" content="<%= site.googleSiteVerification %>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Totally Mobile LLC">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:url" content="<%= canonical %>">
+<meta property="og:image" content="<%= (typeof ogImg !== 'undefined' && ogImg) ? site.domain + ogImg : ogImage %>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#123247">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css?v=4">
+<script type="application/ld+json"><%- JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': site.domain + '/#business',
+  name: site.name,
+  alternateName: 'Totally Mobile',
+  url: site.domain + '/',
+  logo: site.domain + img('totally-mobile-logo-1920w.jpg'),
+  image: site.domain + img('totally-mobile-hero-home-01-1920w.jpeg'),
+  telephone: '+1-508-888-9433',
+  faxNumber: '+1-508-888-3392',
+  description: 'Locally and woman-owned mobility equipment provider since 1998: stair lifts, recliner lift chairs, ramps, power wheelchairs, scooters, beach wheelchairs, personal aids, rentals and in-home repair.',
+  foundingDate: '1998',
+  address: { '@type': 'PostalAddress', streetAddress: site.address.street, addressLocality: site.address.city, addressRegion: site.address.state, postalCode: site.address.zip, addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '08:00', closes: '16:00' }],
+  paymentAccepted: 'American Express, Cash, Check, Discover, MasterCard, Visa',
+  areaServed: towns.map(t => ({ '@type': 'Place', name: t.name + ', MA' })),
+  sameAs: [site.facebook],
+  hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Mobility products & services', itemListElement: servicePages.map(p => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: p.nav, url: site.domain + p.path } })) }
+}) %></script>
+<% if (typeof schema !== 'undefined' && schema) { schema.forEach(function(s){ %><script type="application/ld+json"><%- JSON.stringify(s) %></script>
+<% }) } %>
+<% if (gtmId) { %><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= gtmId %>');</script><% } %>
+<% if (ga4Id) { %><script async src="https://www.googletagmanager.com/gtag/js?id=<%= ga4Id %>"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<%= ga4Id %>');</script><% } %>
+<% if (fbPixel) { %><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','<%= fbPixel %>');fbq('track','PageView');</script><% } %>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<% if (gtmId) { %><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= gtmId %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><% } %>

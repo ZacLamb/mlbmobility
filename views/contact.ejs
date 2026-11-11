@@ -1,0 +1,43 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Contact</span></nav>
+    <p class="eyebrow">Totally Mobile LLC</p>
+    <h1>Contact Totally Mobile LLC</h1>
+    <p class="hero-lede">Questions about stair lifts, scooters, wheelchairs, rentals or repairs? Send us a message or call — we'll get back to you soon.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="side-card form-card">
+      <h2>Send Us a Message</h2>
+      <%- include('partials/lead-form', { fid: 'contact', fname: 'Contact Form', withMessage: true }) %>
+    </div>
+    <div class="contact-info">
+      <div class="info-block">
+        <h2 class="h-sm">Call</h2>
+        <p>Main Phone: <a href="<%= site.phoneHref %>"><%= site.phone %></a><br>Toll-Free Phone: <a href="<%= site.tollFreeHref %>"><%= site.tollFree %></a><br>Fax: <%= site.fax %></p>
+      </div>
+      <div class="info-block">
+        <h2 class="h-sm">Visit</h2>
+        <address><%= site.address.street %><br><%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %></address>
+        <a class="text-link" href="<%= site.mapsUrl %>" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+      <div class="info-block">
+        <h2 class="h-sm">Hours</h2>
+        <dl class="hours"><% site.hours.forEach(function(h){ %><dt><%= h.days %></dt><dd><%= h.time %></dd><% }) %></dl>
+      </div>
+      <div class="map-wrap"><iframe title="Map to Totally Mobile LLC" loading="lazy" src="https://www.google.com/maps?q=439+Route+6A,+East+Sandwich,+MA+02537&output=embed" width="100%" height="300" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2 class="h-sm">Brands We Carry</h2></div>
+    <ul class="logo-row">
+      <% ['EssentialCollection-1920w.jpg','HeritageCollection-LG-12-14-1920w.jpg','PowerRecliners-Lift_LOGOw_pride-1920w.jpg','Viva+Lift+Collection+9+19-1920w.png','AA_HERO_Logo-1920w.jpg','AA_Sidekick_Logo-1920w.jpg'].forEach(function(l){ %><li><img src="<%= img(l) %>" alt="Brand logo" loading="lazy"></li><% }) %>
+    </ul>
+  </div>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,21 @@
+{
+  "name": "mlbmobility",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Totally Mobile LLC — mlbmobility.com (East Sandwich, MA). Node/Express + EJS.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "fetch-assets": "node scripts/fetch-assets.js",
+    "postinstall": "node scripts/fetch-assets.js || true",
+    "check": "node scripts/check-links.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

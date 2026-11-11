@@ -1,0 +1,110 @@
+<%
+  var T = town.name;
+  var openers = [
+    'Looking for mobility equipment in ' + T + '? Totally Mobile LLC has been helping ' + T + ' residents and visitors stay independent since 1998.',
+    'Totally Mobile LLC brings stair lifts, scooters, power wheelchairs and in-home repair to ' + T + ' — from our shop on Route 6A in East Sandwich.',
+    'When someone in ' + T + ' needs to get up the stairs, out the door or onto the beach, Totally Mobile LLC is the local, woman-owned team they call.'
+  ];
+  var opener = openers[idx % openers.length];
+  var svc = [
+    { p: '/stair-lifts-cape-cod', h: 'Stair lifts in ' + T, t: 'Free in-home stairlift estimates, American-made Bruno straight and custom curved stair lifts, professional installation and service on anything we sell.' },
+    { p: '/scooter-and-power-wheelchair-repair', h: 'Scooter & power wheelchair repair in ' + T, t: 'We come to your ' + T + ' home to repair any scooter or power wheelchair, wherever it was bought — backed by a 1-year labor warranty.' },
+    { p: '/manual-and-powered-wheelchairs', h: 'Power & manual wheelchairs', t: 'Jazzy and Go Chair power chairs, folding travel chairs and everyday manual wheelchairs, with a free personalized consultation.' },
+    { p: '/scooters', h: 'Mobility scooters', t: 'Pride Victory, Go-Go, Maxima and Pursuit 3- and 4-wheel scooters for errands around ' + T + ' and beyond.' },
+    { p: '/ramps', h: 'Wheelchair ramps', t: 'American Access modular aluminum, threshold and portable ramps — we navigate any permits ' + T + ' requires.' },
+    { p: '/vertical-platform-lifts', h: 'Porch & platform lifts', t: 'Bruno vertical platform lifts when a ramp would take up too much of the yard.' },
+    { p: '/recliner-lift-chairs', h: 'Recliner lift chairs', t: 'Pride VivaLift and Sitting Pretty power lift recliners — FDA Class II medical devices.' },
+    { p: '/personal-aid', h: 'Bathroom safety & personal aids', t: 'Transfer benches, toilet safety rails and commodes fitted to your bathroom.' },
+    { p: '/rentals', h: 'Rentals in ' + T, t: 'Daily, weekly and monthly rentals of power chairs, scooters, ramps, straight stair lifts and more. Delivery available.' },
+    { p: '/beach-wheelchair-rentals-cape-cod', h: 'Beach wheelchairs', t: town.beaches.length ? ('All-terrain beach wheelchairs and walkers for ' + town.beaches.slice(0,2).join(' and ') + '.') : 'All-terrain beach wheelchairs and walkers to buy or rent for trips to the shore.' },
+    { p: '/vehicle-lifts', h: 'Vehicle scooter lifts', t: 'Bruno vehicle lifts installed at your home so your scooter or chair can come along.' }
+  ];
+  var faqs = [
+    { q: 'Do you come to ' + T + ' for repairs and installations?', a: 'Yes. ' + T + ' is part of our service area. We install stair lifts, ramps and platform lifts on site, and we come to your home to repair scooters and power wheelchairs — no need to bring them to us.' },
+    { q: 'Can I rent a wheelchair or scooter in ' + T + '?', a: 'Yes. We rent power chairs, manual wheelchairs, scooters, beach wheelchairs, ramps and straight stair lifts daily, weekly or monthly, with delivery available.' + (town.island ? ' For island deliveries, call ahead so we can plan around the ferry.' : '') },
+    { q: 'Is the consultation free?', a: 'Yes — we offer free personalized consultations and free in-home stairlift estimates. Call ' + site.phone + ' or request a call back.' }
+  ];
+  var schema = [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'Mobility equipment sales, rentals and repair in ' + T + ', MA', provider: { '@id': site.domain + '/#business' }, areaServed: { '@type': 'Place', name: T + ', MA' }, url: canonical },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: site.domain + '/' }, { '@type': 'ListItem', position: 2, name: 'Service Areas', item: site.domain + '/service-areas' }, { '@type': 'ListItem', position: 3, name: T, item: canonical }] },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(function(f){ return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }; }) }
+  ];
+  var heroes = [img('CUSTOM_STAIRLIFT-1920w.jpg'), img('SCOOTER+AND+BEACH+WHEELCHAIR-1920w.jpg'), img('totally-mobile-hero-home-01-1920w.jpeg'), img('RAMP_%282%29-1920w.jpg'), img('BEACH+WALKER-1920w.jpg')];
+%>
+<%- include('partials/head', { schema: schema }) %>
+<%- include('partials/header') %>
+
+<section class="hero hero-page">
+  <div class="hero-media"><img src="<%= heroes[idx % heroes.length] %>" alt="Mobility equipment from Totally Mobile serving <%= T %>, MA" fetchpriority="high" width="1920" height="900"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/service-areas">Service Areas</a> <span aria-hidden="true">/</span> <span><%= T %></span></nav>
+      <p class="eyebrow"><%= town.region %> · <%= town.home ? 'Our home town' : 'Service area' %></p>
+      <h1>Stair Lifts, Scooters &amp; Wheelchairs in <%= T %>, MA</h1>
+      <p class="hero-lede"><%= opener %></p>
+      <ul class="hero-points">
+        <li>Free personalized consultation</li>
+        <li>In-home repairs — we come to you</li>
+        <li>1-year labor warranty</li>
+      </ul>
+      <div class="hero-actions"><a class="btn btn-coral btn-lg" href="<%= site.phoneHref %>">Call <%= site.phone %></a></div>
+    </div>
+    <aside class="hero-form reveal d2" aria-labelledby="hero-form-title">
+      <h2 id="hero-form-title">Request a Call Back in <%= T %></h2>
+      <%- include('partials/lead-form', { fid: 'town', fname: 'Town Page — ' + T, townName: T }) %>
+    </aside>
+  </div>
+</section>
+
+<section class="section content">
+  <div class="wrap content-grid">
+    <article class="prose">
+      <section class="prose-block">
+        <h2>Mobility Equipment Sales, Rentals &amp; Repair in <%= T %></h2>
+        <p><%= town.local %></p>
+        <p>Since 1998, our locally and woman-owned business has kept people across <%= town.region === 'The Islands' ? 'the Islands' : (town.region === 'South Shore' ? 'the South Shore' : 'Cape Cod') %> mobile. If we sell it, we repair it — and we bring our expertise directly to your doorstep, so you never have to figure out how to get a power wheelchair or scooter to us.</p>
+      </section>
+
+      <section class="prose-block">
+        <h2>Our Services in <%= T %></h2>
+        <ul class="svc-list">
+          <% svc.forEach(function(s){ %><li><h3><a href="<%= s.p %>"><%= s.h %></a></h3><p><%= s.t %></p></li><% }) %>
+        </ul>
+      </section>
+
+      <section class="prose-block">
+        <h2>Neighborhoods &amp; Villages We Serve in <%= T %></h2>
+        <ul class="pill-list"><% town.villages.forEach(function(v){ %><li><%= v %></li><% }) %></ul>
+        <% if (town.beaches.length) { %>
+        <p>Heading to the shore? Our all-terrain <a href="/beach-wheelchairs">beach wheelchairs</a> and beach walkers make sandy spots like <%= town.beaches.join(', ').replace(/, ([^,]*)$/, ' and $1') %> accessible. Rentals are available by the day or week — <a href="/beach-wheelchair-rentals-cape-cod">reserve early for summer</a>.</p>
+        <% } %>
+      </section>
+
+      <section class="prose-block">
+        <h2>Questions from <%= T %> Customers</h2>
+        <div class="faq-list">
+          <% faqs.forEach(function(f){ %><details class="faq"><summary><%= f.q %></summary><p><%= f.a %></p></details><% }) %>
+        </div>
+      </section>
+    </article>
+    <aside class="sidebar">
+      <div class="side-card">
+        <h2 class="side-h">Serving <%= T %> from East Sandwich</h2>
+        <address><%= site.address.street %><br><%= site.address.city %>, <%= site.address.state %> <%= site.address.zip %></address>
+        <a class="btn btn-coral btn-block" href="<%= site.phoneHref %>"><%= site.phone %></a>
+        <dl class="hours small"><% site.hours.forEach(function(h){ %><dt><%= h.days %></dt><dd><%= h.time %></dd><% }) %></dl>
+      </div>
+      <%- include('partials/review', { review: review }) %>
+      <% if (nearby.length) { %>
+      <div class="side-card side-links">
+        <h2 class="side-h">Nearby towns we serve</h2>
+        <ul><% nearby.forEach(function(n){ %><li><a href="/service-areas/<%= n.slug %>">Mobility equipment in <%= n.name %></a></li><% }) %></ul>
+        <a class="text-link" href="/service-areas">All service areas →</a>
+      </div>
+      <% } %>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/cta-band', { ctaTitle: 'Need mobility help in ' + T + '?', ctaSub: 'Call Totally Mobile LLC for a free personalized consultation today!' }) %>
+<%- include('partials/footer') %>

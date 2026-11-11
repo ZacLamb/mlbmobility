@@ -1,0 +1,24 @@
+<%- include('partials/head', { schema: [{ '@context':'https://schema.org', '@type':'ItemList', name: 'Totally Mobile LLC customer testimonials', itemListElement: Object.values(reviews).map(function(r,i){ return { '@type':'ListItem', position:i+1, item: { '@type':'Review', author: { '@type':'Person', name: r.name }, reviewBody: r.text, itemReviewed: { '@id': site.domain + '/#business' } } }; }) }] }) %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Reviews</span></nav>
+    <p class="eyebrow">Totally Mobile LLC</p>
+    <h1>Customer Reviews</h1>
+    <p class="hero-lede">At Totally Mobile LLC, we take pride in providing exceptional wheelchairs and mobility products to our patients. Your feedback helps us improve, and helps others make informed decisions.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="review-masonry">
+      <% Object.values(reviews).forEach(function(r){ %><%- include('partials/review', { review: r }) %><% }) %>
+    </div>
+    <div class="center mt">
+      <p>Worked with us? Please take a moment to leave a review of Totally Mobile LLC and let others know what you think.</p>
+      <a class="btn btn-navy" href="https://www.google.com/search?q=Totally+Mobile+LLC+East+Sandwich+MA+reviews" target="_blank" rel="noopener">Review us on Google</a>
+      <a class="btn btn-ghost" href="<%= site.facebook %>" target="_blank" rel="noopener">Review us on Facebook</a>
+    </div>
+  </div>
+</section>
+<%- include('partials/cta-band') %>
+<%- include('partials/footer') %>

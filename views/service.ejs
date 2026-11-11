@@ -1,0 +1,121 @@
+<%
+  var faqSchema = (page.faqs && page.faqs.length) ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faqs.map(function(f){ return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }; }) }] : [];
+  var schema = [
+    { '@context': 'https://schema.org', '@type': 'Service', name: page.nav, serviceType: page.keyword, url: site.domain + page.path, description: page.description, provider: { '@id': site.domain + '/#business' }, areaServed: towns.map(function(t){ return t.name + ', MA'; }) },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: site.domain + '/' }, { '@type': 'ListItem', position: 2, name: page.nav, item: site.domain + page.path }] }
+  ].concat(faqSchema);
+%>
+<%- include('partials/head', { schema: schema, ogImg: page.heroImg }) %>
+<%- include('partials/header') %>
+
+<section class="hero hero-page">
+  <div class="hero-media"><img src="<%= page.heroImg %>" alt="<%= page.nav %> — Totally Mobile LLC" fetchpriority="high" width="1920" height="900"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span><%= page.nav %></span></nav>
+      <p class="eyebrow"><%= page.eyebrow %></p>
+      <h1><%= page.h1 %></h1>
+      <p class="hero-lede"><%= page.lede %></p>
+      <ul class="hero-points">
+        <li>Variety Of Mobility Solutions</li>
+        <li>1-Year Labor Warranty</li>
+        <li>Free Personalized Consultation</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn btn-coral btn-lg" href="<%= site.phoneHref %>">Call <%= site.phone %></a>
+      </div>
+    </div>
+    <aside class="hero-form reveal d2" aria-labelledby="hero-form-title">
+      <h2 id="hero-form-title">Request a Call Back</h2>
+      <%- include('partials/lead-form', { fid: 'hero', fname: 'Hero Request Form', presetProduct: (site.productOptions.indexOf(page.nav) > -1 ? page.nav : (page.nav === 'Stair Lifts' ? 'Stairlifts' : '')) }) %>
+    </aside>
+  </div>
+</section>
+
+<% if (page.banner) { %><div class="notice"><div class="wrap"><strong>Heads up:</strong> <%= page.banner %> <a href="/request-call-back">Reserve now →</a></div></div><% } %>
+
+<section class="section content">
+  <div class="wrap content-grid">
+    <article class="prose">
+      <% page.sections.forEach(function(s, i){ %>
+        <section class="prose-block reveal">
+          <h2><%= s.h2 %></h2>
+          <%- s.html %>
+        </section>
+        <% if (i === 1 && page.rentalList) { %>
+          <section class="prose-block">
+            <h2>What You Can Rent</h2>
+            <ul class="rental-list"><% page.rentalList.forEach(function(r){ %><li><a href="<%= r.href %>"><%= r.name %></a></li><% }) %></ul>
+          </section>
+        <% } %>
+      <% }) %>
+    </article>
+    <aside class="sidebar">
+      <div class="side-card">
+        <h2 class="side-h">Talk to a local expert</h2>
+        <p>Free personalized consultation — and free in-home estimates for stair lifts.</p>
+        <a class="btn btn-coral btn-block" href="<%= site.phoneHref %>"><%= site.phone %></a>
+        <a class="btn btn-ghost btn-block" href="/request-call-back">Request Call Back</a>
+        <dl class="hours small"><% site.hours.forEach(function(h){ %><dt><%= h.days %></dt><dd><%= h.time %></dd><% }) %></dl>
+      </div>
+      <%- include('partials/review', { review: review }) %>
+      <% if (related.length) { %>
+      <div class="side-card side-links">
+        <h2 class="side-h">Related products</h2>
+        <ul><% related.forEach(function(r){ %><li><a href="<%= r.path %>"><%= r.nav %></a></li><% }) %></ul>
+      </div>
+      <% } %>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/cta-band', { ctaTitle: page.ctaTitle, ctaSub: page.ctaSub }) %>
+
+<% if (page.products && page.products.length) { %>
+<section class="section products">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><%= page.nav %></p>
+      <h2><%= page.productsTitle || ('Featured ' + page.nav) %></h2>
+    </div>
+    <ul class="product-grid">
+      <% page.products.forEach(function(pr){ %>
+      <li class="product-card reveal">
+        <div class="product-img"><img src="<%= pr.img %>" alt="<%= pr.alt %>" loading="lazy" width="600" height="600"></div>
+        <div class="product-body">
+          <h3><%= pr.name %></h3>
+          <% if (pr.sub) { %><p class="product-sub"><%= pr.sub %></p><% } %>
+          <details>
+            <summary>Learn More</summary>
+            <p><%= pr.desc %></p>
+            <% if (pr.link) { %><p><a class="text-link" href="<%= pr.link %>">More details →</a></p><% } %>
+          </details>
+        </div>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+<% } %>
+
+<% if (page.faqs && page.faqs.length) { %>
+<section class="section faq-mini">
+  <div class="wrap narrow">
+    <h2><%= page.nav %> FAQs</h2>
+    <div class="faq-list">
+      <% page.faqs.forEach(function(f){ %><details class="faq"><summary><%= f.q %></summary><p><%= f.a %></p></details><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<section class="section areas-strip">
+  <div class="wrap">
+    <h2 class="h-sm"><%= page.nav %> across Cape Cod, the Islands &amp; the South Shore</h2>
+    <ul class="town-chips">
+      <% towns.forEach(function(t){ %><li><a href="/service-areas/<%= t.slug %>"><%= page.nav %> in <%= t.name %></a></li><% }) %>
+    </ul>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="hero hero-slim">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Service Areas</span></nav>
+    <p class="eyebrow">Cape Cod · The Islands · South Shore</p>
+    <h1>Mobility Equipment Service Areas</h1>
+    <p class="hero-lede">From our location on Route 6A in East Sandwich, Totally Mobile LLC sells, installs, rents and repairs mobility equipment in every Cape Cod town, on Martha's Vineyard and Nantucket, and across the South Shore. And yes — we come to you.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="region-grid">
+      <% regions.forEach(function(r){ var list = towns.filter(function(t){ return t.region === r; }); if (!list.length) return; %>
+      <section class="region-card reveal">
+        <h2><%= r %></h2>
+        <ul>
+          <% list.forEach(function(t){ %><li><a href="/service-areas/<%= t.slug %>"><%= t.name %><% if (t.home) { %> <span class="tag">Home base</span><% } %></a><span class="villages"><%= t.villages.slice(0,4).join(' · ') %></span></li><% }) %>
+        </ul>
+      </section>
+      <% }) %>
+    </div>
+    <div class="map-wrap">
+      <iframe title="Map of Totally Mobile LLC in East Sandwich, MA" loading="lazy" src="https://www.google.com/maps?q=439+Route+6A,+East+Sandwich,+MA+02537&z=9&output=embed" width="100%" height="380" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p class="center muted">Don't see your town? We've traveled as far as the Boston area for service calls — <a href="/request-call-back">ask us</a>.</p>
+  </div>
+</section>
+<%- include('partials/cta-band') %>
+<%- include('partials/footer') %>
