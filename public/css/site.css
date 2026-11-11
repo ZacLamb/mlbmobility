@@ -134,7 +134,7 @@ p{margin:0 0 1em}
 
 /* reviews */
 .review-card{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem 1.8rem 1.5rem;position:relative;box-shadow:0 10px 30px -22px rgba(11,33,49,.5)}
-.quote-mark{color:var(--sand-2);position:absolute;top:1.1rem;right:1.3rem}
+.quote-mark{color:var(--coral);opacity:.85;display:block;width:34px;height:28px;margin-bottom:.7rem}
 .review-card blockquote{margin:0 0 1rem;font-size:1.06rem}
 .review-card figcaption{font-weight:700;color:var(--navy)}
 .review-card figcaption span{font-weight:400;color:var(--muted)}
