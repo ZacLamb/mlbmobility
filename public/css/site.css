@@ -356,3 +356,12 @@ details[open] summary::after{content:"–"}
 .photo-card img{border-radius:6px;width:100%;aspect-ratio:4/5;object-fit:cover}
 .photo-card figcaption{font-family:var(--display);font-style:italic;color:var(--muted);text-align:center;padding:.5rem 0 .4rem;font-size:.95rem}
 .product-img img{max-width:min(100%,340px)}
+.header-phone-num{white-space:nowrap}
+@media (max-width:720px){
+  .header-phone-num{font-size:1rem}
+  .header-actions{gap:.6rem}
+  .promo-bar{font-size:.82rem}
+  .promo-bar a{display:none}
+  .promo-inner{padding:.45rem 12px}
+}
+@media (max-width:360px){.header-phone{display:none}}
